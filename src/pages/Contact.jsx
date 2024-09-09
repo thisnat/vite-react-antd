@@ -1,72 +1,13 @@
-import { Space, Table, Input } from 'antd'
+import { Space, Table, Input, Button } from 'antd'
 import { useState } from 'react'
-
-const mockData = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-  },
-  {
-    key: '4',
-    name: 'Joe Black',
-    age: 32,
-  },
-  {
-    key: '5',
-    name: 'Joe Black',
-    age: 32,
-  },
-  {
-    key: '6',
-    name: 'Joe Black',
-    age: 32,
-  },
-  {
-    key: '7',
-    name: 'Joe Black',
-    age: 32,
-  },
-  {
-    key: '8',
-    name: 'Joe Black',
-    age: 32,
-  },
-  {
-    key: '9',
-    name: 'Joe Black',
-    age: 32,
-  },
-  {
-    key: '10',
-    name: 'Joe Black',
-    age: 32,
-  },
-  {
-    key: '11',
-    name: 'Joe Black',
-    age: 32,
-  },
-  {
-    key: '12',
-    name: 'Joe Black',
-    age: 32,
-  },
-]
+import useStore from '../store/store'
+import { useNavigate } from 'react-router-dom'
 
 function Contact() {
-  const [data, setData] = useState(mockData)
   const [searchText, setSearchText] = useState('')
+  const data = useStore((state) => state.contactData)
+  const setData = useStore((state) => state.setContactData)
+  const navigate = useNavigate()
 
   const handleDeleteButton = (key) => {
     let temp = data.filter((obj) => {
@@ -83,6 +24,10 @@ function Contact() {
     } else {
       setSearchText('')
     }
+  }
+
+  const handleAddButton = () => {
+    navigate('/contact/create')
   }
 
   let columns = [
@@ -120,6 +65,9 @@ function Contact() {
           style={{ marginTop: '1rem' }}
           onChange={(e) => handleInputChange(e)}
         />
+        <Button type="primary" onClick={handleAddButton}>
+          Add
+        </Button>
         <Table
           columns={columns}
           dataSource={data}

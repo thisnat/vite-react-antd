@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import App from './App.jsx'
 import Contact from './pages/Contact.jsx'
+import CreateContact from './pages/CreateContact.jsx'
 
 import './index.css'
 
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: '/contact',
     element: <Contact />,
+  },
+  {
+    path: '/contact/create',
+    element: <CreateContact />,
   },
 ])
 
