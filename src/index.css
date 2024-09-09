@@ -9,3 +9,8 @@ body {
     'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji';
 }
+
+.content {
+    min-height: 88vh;
+    padding: 2rem;
+}

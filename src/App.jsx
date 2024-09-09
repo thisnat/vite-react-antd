@@ -1,78 +1,70 @@
 import React from 'react'
-import { Layout, Menu, theme, Avatar, Button } from 'antd'
+import { Layout, Avatar, Button, Form, Input } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
-const { Header, Content, Footer } = Layout
+const { Content } = Layout
+
+import useStore from './store/store'
 
 const App = () => {
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken()
+  const myName = useStore((state) => state.myName)
+  const myPfp = useStore((state) => state.myPfp)
+  const setMyName = useStore((state) => state.setMyName)
+  const setMyPfp = useStore((state) => state.setMyPfp)
+
+  const onFinish = (values) => {
+    setMyName(values.name)
+    setMyPfp(values.link)
+  }
+
   return (
-    <Layout>
-      <Header
-        style={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 1,
-          width: '100%',
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
-        <div>
-          <p style={{ color: 'white' }}>Test website</p>
-        </div>
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          items={[
-            {
-              key: '1',
-              label: <Link to="/contact">Contact</Link>,
-            },
-          ]}
-          style={{
-            flex: 1,
-            minWidth: 0,
-          }}
-        />
-      </Header>
+    <Content>
+      <div className="content">
+        <center>
+          <h1>Profile</h1>
+          <Avatar
+            size={128}
+            icon={<UserOutlined />}
+            style={{ marginTop: '1rem' }}
+            src={myPfp}
+          />
+          <br />
+          <p style={{ marginTop: '1rem', fontSize: '1rem' }}>{myName}</p>
+          <div style={{ marginTop: '2rem' }}>
+            <h1>Setting</h1>
+            <Form onFinish={onFinish} autoComplete="off">
+              <Form.Item
+                label="Name"
+                name="name"
+                rules={[
+                  {
+                    required: true,
+                  },
+                ]}
+                style={{ marginTop: '1rem' }}
+              >
+                <Input />
+              </Form.Item>
 
-      <Content>
-        <div
-          style={{
-            padding: 24,
-            minHeight: '90vh',
-            background: colorBgContainer,
-            borderRadius: borderRadiusLG,
-          }}
-        >
-          <center>
-            <h1>Profile</h1>
-            <Avatar
-              size={128}
-              icon={<UserOutlined />}
-              style={{ marginTop: '1rem' }}
-            />
-            <br />
-            <h3 style={{ marginTop: '1rem' }}>John Doe</h3>
-            <Button type="primary" style={{ marginTop: '1rem' }}>
-              Primary Button
-            </Button>
-          </center>
-        </div>
-      </Content>
-
-      <Footer
-        style={{
-          textAlign: 'center',
-        }}
-      >
-        Ant Design ©{new Date().getFullYear()} Created by Ant UED
-      </Footer>
-    </Layout>
+              <Form.Item
+                label="Picture link"
+                name="link"
+                rules={[
+                  {
+                    required: false,
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+              <Button type="primary" htmlType="submit">
+                Edit
+              </Button>
+            </Form>
+          </div>
+        </center>
+      </div>
+    </Content>
   )
 }
 export default App

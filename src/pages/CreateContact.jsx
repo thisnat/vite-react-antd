@@ -1,6 +1,8 @@
 import { Input, Button, Form } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import useStore from '../store/store'
+import Swal from 'sweetalert2'
+import { Content } from 'antd/es/layout/layout'
 
 function CreateContact() {
   const setData = useStore((state) => state.setContactData)
@@ -19,12 +21,21 @@ function CreateContact() {
       ...contactData,
     ])
 
-    navigate('/contact')
+    Swal.fire({
+      title: 'Add success!',
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      confirmButtonText: 'Go to contact page',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate('/contact')
+      }
+    })
   }
 
   return (
-    <>
-      <div>
+    <Content>
+      <div className="content">
         <h1>Create Contact</h1>
         <Form
           onFinish={onFinish}
@@ -74,7 +85,7 @@ function CreateContact() {
           </Form.Item>
         </Form>
       </div>
-    </>
+    </Content>
   )
 }
 
