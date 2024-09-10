@@ -1,14 +1,17 @@
-import { Layout, Menu, Flex, Avatar } from 'antd'
+import { Layout, Menu, Flex, Avatar, Switch } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 const { Header } = Layout
 
 import useStore from '../store/store'
 import { useNavigate } from 'react-router-dom'
 
+import { useTranslation } from 'react-i18next'
+
 function CustomHeader() {
   const navigate = useNavigate()
   const myName = useStore((state) => state.myName)
   const myPfp = useStore((state) => state.myPfp)
+  const { t, i18n } = useTranslation()
 
   const onClick = (e) => {
     if (e.key == '2') {
@@ -38,28 +41,41 @@ function CustomHeader() {
           items={[
             {
               key: '0',
-              label: 'Test website',
+              label: t('title'),
             },
             {
               key: '1',
-              label: 'Contact',
+              label: t('nav_contact'),
               children: [
-                { label: 'List', key: '2' },
-                { label: 'Create', key: '3' },
+                { label: t('nav_list'), key: '2' },
+                { label: t('nav_create'), key: '3' },
               ],
             },
             {
               key: '4',
-              label: 'Current location',
+              label: t('nav_current_location'),
             },
           ]}
         />
         <div>
           <span>
             <Avatar icon={<UserOutlined />} src={myPfp} />
-            <span style={{ marginLeft: '0.5rem', marginRight: '1rem' }}>
+            <span style={{ marginLeft: '0.5rem', marginRight: '0.5rem' }}>
               {myName}
             </span>
+            <Switch
+              checkedChildren="en"
+              unCheckedChildren="th"
+              defaultChecked
+              style={{ marginRight: '1rem' }}
+              onChange={(isOn) => {
+                if (isOn) {
+                  i18n.changeLanguage('en')
+                } else {
+                  i18n.changeLanguage('th')
+                }
+              }}
+            />
           </span>
         </div>
       </Flex>

@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom'
 import useStore from '../store/store'
 import Swal from 'sweetalert2'
 import { Content } from 'antd/es/layout/layout'
+import { useTranslation } from 'react-i18next'
 
 function CreateContact() {
   const setData = useStore((state) => state.setContactData)
   const contactData = useStore((state) => state.contactData)
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const onFinish = (values) => {
     let random = (Math.random() + 1).toString(36).substring(7)
@@ -22,10 +24,10 @@ function CreateContact() {
     ])
 
     Swal.fire({
-      title: 'Add success!',
+      title: t('contact_add_success'),
       allowEscapeKey: false,
       allowOutsideClick: false,
-      confirmButtonText: 'Go to contact page',
+      confirmButtonText: t('go_to_contact_page'),
     }).then((result) => {
       if (result.isConfirmed) {
         navigate('/contact')
@@ -36,14 +38,14 @@ function CreateContact() {
   return (
     <Content>
       <div className="content">
-        <h1>Create Contact</h1>
+        <h1>{t('create_new_contact')}</h1>
         <Form
           onFinish={onFinish}
           autoComplete="off"
           style={{ marginTop: '1rem' }}
         >
           <Form.Item
-            label="Name"
+            label={t('name')}
             name="name"
             rules={[
               {
@@ -55,7 +57,7 @@ function CreateContact() {
           </Form.Item>
 
           <Form.Item
-            label="Lastname"
+            label={t('last_name')}
             name="lastname"
             rules={[
               {
@@ -67,7 +69,7 @@ function CreateContact() {
           </Form.Item>
 
           <Form.Item
-            label="Age"
+            label={t('age')}
             name="age"
             rules={[
               {
@@ -80,7 +82,7 @@ function CreateContact() {
 
           <Form.Item>
             <Button type="primary" htmlType="submit">
-              Submit
+              {t('create_new_contact')}
             </Button>
           </Form.Item>
         </Form>

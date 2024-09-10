@@ -11,6 +11,7 @@ import Contact from './pages/Contact.jsx'
 import CreateContact from './pages/CreateContact.jsx'
 
 import './index.css'
+import './i18n.js'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

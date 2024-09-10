@@ -1,0 +1,20 @@
+{
+    "title": "เทสเว็บไซต์",
+    "nav_contact": "รายชื่อ",
+    "nav_current_location":"ตำแหน่งของฉัน",
+    "nav_list":"รายการ",
+    "nav_create":"สร้าง",
+    "home_profile":"โปรไฟล์",
+    "home_setting":"ตั้งค่า",
+    "home_edit_btn": "แก้ไข",
+    "name": "ชื่อ",
+    "home_picture_link": "ลิ้งรูปภาพ",
+    "search":"ค้นหา",
+    "create_new_contact":"สร้างรายชื่อใหม่",
+    "age":"อายุ",
+    "action":"ดำเนินการ",
+    "delete":"ลบ",
+    "last_name":"นามสกุล",
+    "contact_add_success" : "เพิ่มรายการสำเร็จ!",
+    "go_to_contact_page": "ไปที่หน้ารายการรายชื่อ"
+}

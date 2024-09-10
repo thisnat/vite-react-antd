@@ -1,0 +1,20 @@
+{
+    "title": "Test website",
+    "nav_contact": "Contact",
+    "nav_current_location":"Current location",
+    "nav_list":"List",
+    "nav_create":"Create",
+    "home_profile":"Profile",
+    "home_setting":"Setting",
+    "home_edit_btn": "Edit",
+    "name": "Name",
+    "home_picture_link": "Picture link",
+    "search":"Search",
+    "create_new_contact":"Create new contact",
+    "age":"Age",
+    "action":"Action",
+    "delete":"Delete",
+    "last_name":"Lastname",
+    "contact_add_success" : "Add success!",
+    "go_to_contact_page": "Go to contact list page"
+}

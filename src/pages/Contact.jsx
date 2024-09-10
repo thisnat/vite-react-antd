@@ -3,12 +3,14 @@ import { useState } from 'react'
 import useStore from '../store/store'
 import { useNavigate } from 'react-router-dom'
 import { Content } from 'antd/es/layout/layout'
+import { useTranslation } from 'react-i18next'
 
 function Contact() {
   const [searchText, setSearchText] = useState('')
   const data = useStore((state) => state.contactData)
   const setData = useStore((state) => state.setContactData)
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const handleDeleteButton = (key) => {
     let temp = data.filter((obj) => {
@@ -33,7 +35,7 @@ function Contact() {
 
   let columns = [
     {
-      title: 'Name',
+      title: t('name'),
       dataIndex: 'name',
       key: 'name',
       filteredValue: [searchText],
@@ -42,16 +44,16 @@ function Contact() {
       },
     },
     {
-      title: 'Age',
+      title: t('age'),
       dataIndex: 'age',
       key: 'age',
     },
     {
-      title: 'Action',
+      title: t('action'),
       key: 'action',
       render: (_, record) => (
         <Space size="middle">
-          <a onClick={() => handleDeleteButton(record.key)}>Delete</a>
+          <a onClick={() => handleDeleteButton(record.key)}>{t('delete')}</a>
         </Space>
       ),
     },
@@ -60,9 +62,9 @@ function Contact() {
   return (
     <Content>
       <div className="content">
-        <h1>Contact</h1>
+        <h1>{t('nav_contact')}</h1>
         <Input
-          placeholder="Search"
+          placeholder={t('search')}
           style={{ marginTop: '1rem' }}
           onChange={(e) => handleInputChange(e)}
         />
@@ -72,7 +74,7 @@ function Contact() {
             onClick={handleAddButton}
             style={{ marginTop: '1rem', marginBottom: '1rem' }}
           >
-            Create new contact
+            {t('create_new_contact')}
           </Button>
         </div>
         <Table

@@ -6,11 +6,14 @@ const { Content } = Layout
 
 import useStore from './store/store'
 
+import { useTranslation } from 'react-i18next'
+
 const App = () => {
   const myName = useStore((state) => state.myName)
   const myPfp = useStore((state) => state.myPfp)
   const setMyName = useStore((state) => state.setMyName)
   const setMyPfp = useStore((state) => state.setMyPfp)
+  const { t } = useTranslation()
 
   const onFinish = (values) => {
     setMyName(values.name)
@@ -21,7 +24,7 @@ const App = () => {
     <Content>
       <div className="content">
         <center>
-          <h1>Profile</h1>
+          <h1>{t('home_profile')}</h1>
           <Avatar
             size={128}
             icon={<UserOutlined />}
@@ -31,10 +34,10 @@ const App = () => {
           <br />
           <p style={{ marginTop: '1rem', fontSize: '1rem' }}>{myName}</p>
           <div style={{ marginTop: '2rem' }}>
-            <h1>Setting</h1>
+            <h1>{t('home_setting')}</h1>
             <Form onFinish={onFinish} autoComplete="off">
               <Form.Item
-                label="Name"
+                label={t('name')}
                 name="name"
                 rules={[
                   {
@@ -47,7 +50,7 @@ const App = () => {
               </Form.Item>
 
               <Form.Item
-                label="Picture link"
+                label={t('home_picture_link')}
                 name="link"
                 rules={[
                   {
@@ -58,7 +61,7 @@ const App = () => {
                 <Input />
               </Form.Item>
               <Button type="primary" htmlType="submit">
-                Edit
+                {t('home_edit_btn')}
               </Button>
             </Form>
           </div>
