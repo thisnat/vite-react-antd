@@ -16,5 +16,6 @@
     "delete":"ลบ",
     "last_name":"นามสกุล",
     "contact_add_success" : "เพิ่มรายการสำเร็จ!",
-    "go_to_contact_page": "ไปที่หน้ารายการรายชื่อ"
+    "go_to_contact_page": "ไปที่หน้ารายการรายชื่อ",
+    "clear":"ล้าง"
 }

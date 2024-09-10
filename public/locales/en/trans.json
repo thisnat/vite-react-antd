@@ -16,5 +16,6 @@
     "delete":"Delete",
     "last_name":"Lastname",
     "contact_add_success" : "Add success!",
-    "go_to_contact_page": "Go to contact list page"
+    "go_to_contact_page": "Go to contact list page",
+    "clear":"Clear"
 }

@@ -84,7 +84,7 @@ function Contact() {
               setShowClearBtn(false)
             }}
           >
-            Clear
+            {t('clear')}
           </Button>
         ) : null}
         <div style={{ float: 'right' }}>
