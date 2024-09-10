@@ -6,23 +6,20 @@ const useStore = create((set) => ({
     contactData: [
         {
             key: '1',
-            name: 'John Brown',
+            name: 'Gilles Deleuze',
             age: 32,
         },
         {
             key: '2',
-            name: 'Jim Green',
+            name: 'George Bataille',
             age: 42,
         },
-        {
-            key: '3',
-            name: 'Joe Black',
-            age: 32,
-        },
     ],
+    collapsed: true,
     setMyName: (newName) => set({myName: newName}),
     setMyPfp: (newPfp) => set({myPfp: newPfp}),
-    setContactData: (newData) => set({ contactData: newData })
+    setContactData: (newData) => set({ contactData: newData }),
+    setCollapsed: () => set(state => ({collapsed: !state.collapsed}))
 }))
 
 export default useStore

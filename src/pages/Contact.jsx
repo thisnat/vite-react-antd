@@ -7,6 +7,8 @@ import { useTranslation } from 'react-i18next'
 
 function Contact() {
   const [searchText, setSearchText] = useState('')
+  const [searchValue, setSearchValue] = useState('')
+  const [showClearBtn, setShowClearBtn] = useState(false)
   const data = useStore((state) => state.contactData)
   const setData = useStore((state) => state.setContactData)
   const navigate = useNavigate()
@@ -22,9 +24,12 @@ function Contact() {
 
   const handleInputChange = (e) => {
     let text = e.target.value
+    setSearchValue(text)
     if (text.length >= 3) {
+      setShowClearBtn(true)
       setSearchText(text)
     } else {
+      setShowClearBtn(false)
       setSearchText('')
     }
   }
@@ -64,10 +69,24 @@ function Contact() {
       <div className="content">
         <h1>{t('nav_contact')}</h1>
         <Input
+          value={searchValue}
           placeholder={t('search')}
-          style={{ marginTop: '1rem' }}
+          style={{ marginTop: '1rem', maxWidth: 500 }}
           onChange={(e) => handleInputChange(e)}
         />
+        {showClearBtn ? (
+          <Button
+            danger
+            style={{ marginLeft: '0.5rem' }}
+            onClick={() => {
+              setSearchText('')
+              setSearchValue('')
+              setShowClearBtn(false)
+            }}
+          >
+            Clear
+          </Button>
+        ) : null}
         <div style={{ float: 'right' }}>
           <Button
             type="primary"

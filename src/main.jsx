@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Layout } from 'antd'
 import CustomHeader from './components/CustomHeader.jsx'
 import CustomFooter from './components/CustomFooter.jsx'
+import CustomSider from './components/CustomSider.jsx'
 
 import App from './App.jsx'
 import Contact from './pages/Contact.jsx'
@@ -17,13 +18,16 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Layout>
-        <CustomHeader />
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/contact/create" element={<CreateContact />} />
-        </Routes>
-        <CustomFooter />
+        <CustomSider />
+        <Layout>
+          <CustomHeader />
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/contact/create" element={<CreateContact />} />
+          </Routes>
+          <CustomFooter />
+        </Layout>
       </Layout>
     </BrowserRouter>
   </StrictMode>,

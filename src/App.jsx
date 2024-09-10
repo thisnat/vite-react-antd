@@ -1,4 +1,3 @@
-import React from 'react'
 import { Layout, Avatar, Button, Form, Input } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 
@@ -14,10 +13,12 @@ const App = () => {
   const setMyName = useStore((state) => state.setMyName)
   const setMyPfp = useStore((state) => state.setMyPfp)
   const { t } = useTranslation()
+  const [form] = Form.useForm()
 
   const onFinish = (values) => {
     setMyName(values.name)
     setMyPfp(values.link)
+    form.resetFields()
   }
 
   return (
@@ -35,7 +36,7 @@ const App = () => {
           <p style={{ marginTop: '1rem', fontSize: '1rem' }}>{myName}</p>
           <div style={{ marginTop: '2rem' }}>
             <h1>{t('home_setting')}</h1>
-            <Form onFinish={onFinish} autoComplete="off">
+            <Form onFinish={onFinish} autoComplete="off" form={form}>
               <Form.Item
                 label={t('name')}
                 name="name"
@@ -44,7 +45,7 @@ const App = () => {
                     required: true,
                   },
                 ]}
-                style={{ marginTop: '1rem' }}
+                style={{ marginTop: '1rem', maxWidth: 300 }}
               >
                 <Input />
               </Form.Item>
@@ -57,6 +58,7 @@ const App = () => {
                     required: false,
                   },
                 ]}
+                style={{ maxWidth: 300 }}
               >
                 <Input />
               </Form.Item>

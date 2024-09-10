@@ -38,54 +38,56 @@ function CreateContact() {
   return (
     <Content>
       <div className="content">
-        <h1>{t('create_new_contact')}</h1>
-        <Form
-          onFinish={onFinish}
-          autoComplete="off"
-          style={{ marginTop: '1rem' }}
-        >
-          <Form.Item
-            label={t('name')}
-            name="name"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
+        <center>
+          <h1>{t('create_new_contact')}</h1>
+          <Form
+            onFinish={onFinish}
+            autoComplete="off"
+            style={{ marginTop: '1rem', maxWidth: 300 }}
           >
-            <Input />
-          </Form.Item>
+            <Form.Item
+              label={t('name')}
+              name="name"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
 
-          <Form.Item
-            label={t('last_name')}
-            name="lastname"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
+            <Form.Item
+              label={t('last_name')}
+              name="lastname"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
 
-          <Form.Item
-            label={t('age')}
-            name="age"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input type="number" />
-          </Form.Item>
+            <Form.Item
+              label={t('age')}
+              name="age"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
 
-          <Form.Item>
-            <Button type="primary" htmlType="submit">
-              {t('create_new_contact')}
-            </Button>
-          </Form.Item>
-        </Form>
+            <Form.Item>
+              <Button type="primary" htmlType="submit">
+                {t('create_new_contact')}
+              </Button>
+            </Form.Item>
+          </Form>
+        </center>
       </div>
     </Content>
   )
